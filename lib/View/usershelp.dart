@@ -79,38 +79,37 @@ class Userhelp extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: InkWell(
-                        onTap: () {
-                          viewmodel.navigatetomap();
-                        },
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.2,
-                          width: MediaQuery.of(context).size.width * 0.35,
-                          decoration: BoxDecoration(
-                              color: Color(color_const.primarycolor),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Stack(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(18.0),
-                                child: Container(
-                                  width: 100,
-                                  height: 100,
-                                  child:
-                                      Image.asset('assets/images/security.png'),
+                        onTap: () {},
+                        child: InkWell(
+                          onTap: () {
+                            viewmodel.navigatetopolice();
+                          },
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * 0.2,
+                            width: MediaQuery.of(context).size.width * 0.35,
+                            decoration: BoxDecoration(
+                                color: Color(color_const.primarycolor),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Stack(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(18.0),
+                                  child: Container(
+                                    width: 100,
+                                    height: 100,
+                                    child: Image.asset(
+                                        'assets/images/security.png'),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
                     InkWell(
                       onTap: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => NearestHospitalsMapApp(),
-                        //     ));
+                        viewmodel.navigatetomap();
                       },
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.2,
@@ -143,43 +142,27 @@ class Userhelp extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * 0.2,
-                        width: MediaQuery.of(context).size.width * 0.35,
-                        decoration: BoxDecoration(
-                            color: Color(color_const.primarycolor),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Stack(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(18.0),
-                              child: Container(
-                                width: 100,
-                                height: 100,
-                                child: Image.asset('assets/images/fire.png'),
+                      child: InkWell(
+                        onTap: () {},
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          width: MediaQuery.of(context).size.width * 0.35,
+                          decoration: BoxDecoration(
+                              color: Color(color_const.primarycolor),
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Stack(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(18.0),
+                                child: Container(
+                                  width: 100,
+                                  height: 100,
+                                  child: Image.asset('assets/images/fire.png'),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.2,
-                      width: MediaQuery.of(context).size.width * 0.35,
-                      decoration: BoxDecoration(
-                          color: Color(color_const.primarycolor),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Stack(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(18.0),
-                            child: Container(
-                              width: 100,
-                              height: 100,
-                              child: Image.asset('assets/images/ambulance.png'),
-                            ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ],

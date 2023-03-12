@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:project/Viewmodels/nearest_viewmodel.dart';
 import 'package:project/constrainsts/color_const.dart';
@@ -22,11 +21,11 @@ class _NearestlocState extends State<Nearestloc> {
           onPressed: () {
             viewmodel.getcurrentlocationuser();
           },
-          child: Icon(Icons.location_city),
+          child: Icon(Icons.pin_drop),
         ),
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             "Polic Stations",
             style: TextStyle(color: Colors.black),
           ),
@@ -52,10 +51,15 @@ class _NearestlocState extends State<Nearestloc> {
                   width: MediaQuery.of(context).size.width * 1,
                   height: MediaQuery.of(context).size.height * 0.57,
                   child: GoogleMap(
-                      initialCameraPosition: CameraPosition(
-                    target: viewmodel.currentlocation,
-                    zoom: 14,
-                  )),
+                    markers: Set<Marker>.of(viewmodel.markerlist),
+                    initialCameraPosition: CameraPosition(
+                      target: viewmodel.currentlocation,
+                      zoom: 15,
+                    ),
+                    onMapCreated: (GoogleMapController controller) {
+                      viewmodel.mycontroller.complete(controller);
+                    },
+                  ),
                 )
               ],
             ),
@@ -80,7 +84,7 @@ class _NearestlocState extends State<Nearestloc> {
                               padding: EdgeInsets.all(15),
                               primary: Color(color_const.primarycolor)),
                           child: const Text(
-                            "Fight / Fire",
+                            "Medical Emergency",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -98,7 +102,7 @@ class _NearestlocState extends State<Nearestloc> {
                               padding: EdgeInsets.all(15),
                               primary: Color(color_const.primarycolor)),
                           child: const Text(
-                            "Roberry",
+                            "Fire",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -116,7 +120,7 @@ class _NearestlocState extends State<Nearestloc> {
                               padding: EdgeInsets.all(15),
                               primary: Color(color_const.primarycolor)),
                           child: const Text(
-                            "Harrresment",
+                            "Accident",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),

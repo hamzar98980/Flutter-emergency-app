@@ -10,4 +10,8 @@ class userhelp_viewmodel extends BaseViewModel {
   navigatetomap() {
     navigationservice.navigateToNearestloc();
   }
+
+  navigatetopolice() {
+    navigationservice.navigateToPolicmap();
+  }
 }

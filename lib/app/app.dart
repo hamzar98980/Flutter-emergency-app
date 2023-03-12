@@ -5,6 +5,8 @@ import 'package:project/View/usershelp.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../View/nearestlocation.dart';
+import '../View/policmap.dart';
+import '../services/nearestlocation_service.dart';
 
 @StackedApp(
   routes: [
@@ -13,11 +15,15 @@ import '../View/nearestlocation.dart';
     MaterialRoute(page: Register),
     MaterialRoute(page: Userhelp),
     MaterialRoute(page: Nearestloc),
+    MaterialRoute(page: Policmap),
   ],
   dependencies: [
     Singleton(
       classType: NavigationService,
     ),
+    LazySingleton(
+      classType: nearestlocation_services,
+    )
   ],
 )
 class App {}
