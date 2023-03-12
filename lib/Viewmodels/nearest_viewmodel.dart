@@ -33,6 +33,7 @@ class nearest_viewmodel extends BaseViewModel {
   }
 
   LatLng currentlocation = LatLng(24.8607, 67.0011);
+
   final Completer<GoogleMapController> mycontroller = Completer();
   final List<Marker> markerlist = <Marker>[];
 
@@ -49,7 +50,7 @@ class nearest_viewmodel extends BaseViewModel {
     getcurrentuserlocation().then((value) async {
       LatLng currentlocation = LatLng(value.latitude, value.longitude);
       await getnearmarker('hospital', value.latitude, value.longitude);
-      print(markerlist);
+
       markerlist.add(Marker(
         markerId: MarkerId('1'),
         position: LatLng(value.latitude, value.longitude),

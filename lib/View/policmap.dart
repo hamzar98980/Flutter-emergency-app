@@ -12,7 +12,32 @@ class Policmap extends StatelessWidget {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => policviewmodel(),
       builder: ((context, viewModel, child) => Scaffold(
-            appBar: AppBar(),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                viewModel.usercurrentloc();
+              },
+              child: Icon(Icons.pin_drop),
+            ),
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              title: const Text(
+                "Police Station",
+                style: TextStyle(color: Colors.black),
+              ),
+              leading: Container(
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              elevation: 0,
+              backgroundColor: Colors.white,
+            ),
             body: Column(
               children: [
                 Row(
@@ -20,16 +45,16 @@ class Policmap extends StatelessWidget {
                     Container(
                       width: MediaQuery.of(context).size.width * 1,
                       height: MediaQuery.of(context).size.height * 0.57,
-                      // child: GoogleMap(
-                      //   markers: Set<Marker>.of(viewModel.markerlist),
-                      //   initialCameraPosition: CameraPosition(
-                      //     target: viewModel.currentlocation,
-                      //     zoom: 15,
-                      //   ),
-                      //   onMapCreated: (GoogleMapController controller) {
-                      //     viewModel.mycontroller.complete(controller);
-                      //   },
-                      // ),
+                      child: GoogleMap(
+                        markers: Set<Marker>.of(viewModel.policemarker),
+                        initialCameraPosition: CameraPosition(
+                          target: viewModel.getmapstartlocation(),
+                          zoom: 15,
+                        ),
+                        onMapCreated: (GoogleMapController controller) {
+                          viewModel.policecontroller.complete(controller);
+                        },
+                      ),
                     )
                   ],
                 ),
@@ -55,7 +80,7 @@ class Policmap extends StatelessWidget {
                                   padding: EdgeInsets.all(15),
                                   primary: Color(color_const.primarycolor)),
                               child: const Text(
-                                "Medical Emergency",
+                                "Fight / Fire",
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -74,7 +99,7 @@ class Policmap extends StatelessWidget {
                                   padding: EdgeInsets.all(15),
                                   primary: Color(color_const.primarycolor)),
                               child: const Text(
-                                "Fire",
+                                "Robbery",
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -93,7 +118,7 @@ class Policmap extends StatelessWidget {
                                   padding: EdgeInsets.all(15),
                                   primary: Color(color_const.primarycolor)),
                               child: const Text(
-                                "Accident",
+                                "Harassment",
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),

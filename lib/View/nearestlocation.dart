@@ -26,7 +26,7 @@ class _NearestlocState extends State<Nearestloc> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: const Text(
-            "Polic Stations",
+            "Hospitals",
             style: TextStyle(color: Colors.black),
           ),
           leading: Container(
