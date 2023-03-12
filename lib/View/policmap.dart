@@ -14,7 +14,7 @@ class Policmap extends StatelessWidget {
       builder: ((context, viewModel, child) => Scaffold(
             floatingActionButton: FloatingActionButton(
               onPressed: () {
-                viewModel.usercurrentloc();
+                viewModel.getcurrentlocationuser();
               },
               child: Icon(Icons.pin_drop),
             ),

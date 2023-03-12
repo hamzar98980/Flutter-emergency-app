@@ -41,20 +41,6 @@ class policviewmodel extends BaseViewModel {
     return mapstartlocation;
   }
 
-  usercurrentloc() {
-    nearestloc_services.getcurrentlocationuser();
-  }
-
-  loccontroller() {
-    // var controller = nearestloc_services.policecontroller;
-    // return controller;
-  }
-
-  makeronmap() {
-    List makerlist = nearestloc_services.marker_list;
-    return makerlist;
-  }
-
   final Completer<GoogleMapController> policecontroller = Completer();
   final List<Marker> policemarker = <Marker>[];
   Future<Position> getcurrentuserlocation() async {
