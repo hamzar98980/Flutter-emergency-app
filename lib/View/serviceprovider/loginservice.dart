@@ -9,6 +9,9 @@ class Servicelogin extends StatelessWidget {
   const Servicelogin({super.key});
   @override
   Widget build(BuildContext context) {
+    TextEditingController email = TextEditingController();
+    TextEditingController pass = TextEditingController();
+
     String _selectedItem;
 
     return ViewModelBuilder.nonReactive(
@@ -74,6 +77,7 @@ class Servicelogin extends StatelessWidget {
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.9,
                             child: TextField(
+                              controller: email,
                               decoration: InputDecoration(
                                 hintText: 'Enter Email',
                                 focusedBorder: UnderlineInputBorder(
@@ -96,6 +100,7 @@ class Servicelogin extends StatelessWidget {
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.9,
                             child: TextField(
+                              controller: pass,
                               decoration: InputDecoration(
                                 hintText: 'Enter Password',
                                 focusedBorder: UnderlineInputBorder(
@@ -135,7 +140,9 @@ class Servicelogin extends StatelessWidget {
                     Column(
                       children: [
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            viewModel.loginuser(email.text, pass.text);
+                          },
                           style: ElevatedButton.styleFrom(
                               minimumSize: Size(
                                   MediaQuery.of(context).size.width * 0.7, 30),

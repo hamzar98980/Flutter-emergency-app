@@ -1,6 +1,7 @@
 import 'package:project/View/homeview.dart';
 import 'package:project/View/login.dart';
 import 'package:project/View/register.dart';
+import 'package:project/View/serviceprovider/services_home.dart';
 import 'package:project/View/usershelp.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -20,6 +21,7 @@ import '../services/nearestlocation_service.dart';
     MaterialRoute(page: Policmap),
     MaterialRoute(page: Servicelogin),
     MaterialRoute(page: ServiceRegister),
+    MaterialRoute(page: Servicehome),
   ],
   dependencies: [
     Singleton(
