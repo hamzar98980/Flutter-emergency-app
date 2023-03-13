@@ -6,6 +6,8 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../View/nearestlocation.dart';
 import '../View/policmap.dart';
+import '../View/serviceprovider/loginservice.dart';
+import '../View/serviceprovider/registerservice.dart';
 import '../services/nearestlocation_service.dart';
 
 @StackedApp(
@@ -16,6 +18,8 @@ import '../services/nearestlocation_service.dart';
     MaterialRoute(page: Userhelp),
     MaterialRoute(page: Nearestloc),
     MaterialRoute(page: Policmap),
+    MaterialRoute(page: Servicelogin),
+    MaterialRoute(page: ServiceRegister),
   ],
   dependencies: [
     Singleton(

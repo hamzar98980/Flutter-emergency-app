@@ -52,7 +52,9 @@ class Homeview extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 20),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            viewModel.navigattoservicelogin();
+                          },
                           style: ElevatedButton.styleFrom(
                               minimumSize: Size(
                                   MediaQuery.of(context).size.width * 0.7, 30),
