@@ -7,10 +7,17 @@ import 'package:project/services/nearestlocation_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:http/http.dart' as http;
 
+import '../View/components/alertbox.dart';
 import '../app/app.locator.dart';
+import '../services/userservicehelper.dart';
 
 class policviewmodel extends BaseViewModel {
   final nearestloc_services = locator<nearestlocation_services>();
+  final userhelp = userservicehelp();
+
+  polichelp(servicename, servicetype) {
+    userhelp.userhelper(servicename, servicetype);
+  }
 
   getnearmarker(type, lati, longitude) async {
     String apiKey = 'AIzaSyDT3LscTu25eNfJ2E_OBoogEIgHbh8oTvY';
@@ -72,5 +79,6 @@ class policviewmodel extends BaseViewModel {
     });
   }
 }
+
 // https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=24.9265786,67.0305041&radius=1500&type=fire_station&key=AIzaSyDT3LscTu25eNfJ2E_OBoogEIgHbh8oTvY
 // https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=24.9265786,67.0305041&radius=5500&type=police&key=AIzaSyDT3LscTu25eNfJ2E_OBoogEIgHbh8oTvY

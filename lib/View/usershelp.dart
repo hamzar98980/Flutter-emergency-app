@@ -4,7 +4,6 @@ import 'package:project/constrainsts/color_const.dart';
 import 'package:stacked/stacked.dart';
 
 import '../Viewmodels/userhelp_viewmodel.dart';
-import 'mylocation.dart';
 
 class Userhelp extends StatelessWidget {
   const Userhelp({super.key});
@@ -15,13 +14,15 @@ class Userhelp extends StatelessWidget {
       viewModelBuilder: () => userhelp_viewmodel(),
       builder: (context, viewmodel, child) => Scaffold(
         bottomNavigationBar: CurvedNavigationBar(
-          index: 0,
+          index: 1,
           backgroundColor: Colors.white,
           buttonBackgroundColor: Colors.black,
           color: Color(color_const.primarycolor),
           animationDuration: Duration(milliseconds: 300),
           onTap: (index) {
-            if (index == 1) {}
+            if (index == 2) {
+              viewmodel.navigatetorequest();
+            }
             print(index);
           },
           items: const [

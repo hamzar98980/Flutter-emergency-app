@@ -34,7 +34,7 @@ class _NearestlocState extends State<Nearestloc> {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_back,
                 color: Colors.black,
               ),

@@ -14,4 +14,8 @@ class userhelp_viewmodel extends BaseViewModel {
   navigatetopolice() {
     navigationservice.navigateToPolicmap();
   }
+
+  navigatetorequest() {
+    navigationservice.navigateToRequestuser();
+  }
 }

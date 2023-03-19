@@ -9,6 +9,7 @@ import '../View/nearestlocation.dart';
 import '../View/policmap.dart';
 import '../View/serviceprovider/loginservice.dart';
 import '../View/serviceprovider/registerservice.dart';
+import '../View/userrequests.dart';
 import '../services/nearestlocation_service.dart';
 
 @StackedApp(
@@ -22,6 +23,7 @@ import '../services/nearestlocation_service.dart';
     MaterialRoute(page: Servicelogin),
     MaterialRoute(page: ServiceRegister),
     MaterialRoute(page: Servicehome),
+    MaterialRoute(page: requestuser),
   ],
   dependencies: [
     Singleton(

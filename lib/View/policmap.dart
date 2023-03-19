@@ -4,6 +4,8 @@ import 'package:project/Viewmodels/polic_viewmodel.dart';
 import 'package:project/constrainsts/color_const.dart';
 import 'package:stacked/stacked.dart';
 
+import 'components/alertbox.dart';
+
 class Policmap extends StatelessWidget {
   const Policmap({super.key});
 
@@ -69,7 +71,18 @@ class Policmap extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(5.0),
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                viewModel.polichelp('Fight / Fire', 'Police');
+                                BlurryDialog alert = BlurryDialog(
+                                    Servicestype:
+                                        'for Fight / Fire has been submitted Police');
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return alert;
+                                  },
+                                );
+                              },
                               style: ElevatedButton.styleFrom(
                                   minimumSize: Size(
                                       MediaQuery.of(context).size.width * 0.7,
@@ -88,7 +101,18 @@ class Policmap extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(5.0),
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                viewModel.polichelp('Robbery', 'Police');
+                                BlurryDialog alert = BlurryDialog(
+                                    Servicestype:
+                                        'for Robbery has been submitted Police');
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return alert;
+                                  },
+                                );
+                              },
                               style: ElevatedButton.styleFrom(
                                   minimumSize: Size(
                                       MediaQuery.of(context).size.width * 0.7,
@@ -107,7 +131,18 @@ class Policmap extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(5.0),
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                viewModel.polichelp('Harassment', 'Police');
+                                BlurryDialog alert = BlurryDialog(
+                                    Servicestype:
+                                        'for Harassment has been submitted Police');
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return alert;
+                                  },
+                                );
+                              },
                               style: ElevatedButton.styleFrom(
                                   minimumSize: Size(
                                       MediaQuery.of(context).size.width * 0.7,

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:project/app/app.locator.dart';
 import 'package:project/app/app.router.dart';
 import 'package:stacked/stacked.dart';
@@ -13,24 +14,42 @@ class loginservice extends BaseViewModel {
     _navigationService.navigateToServiceRegister();
   }
 
+  CollectionReference userdata =
+      FirebaseFirestore.instance.collection("usersdata");
+
+  getallusersdata() async {
+    return userdata.get();
+  }
+
+  getalldata() {
+    FutureBuilder(
+        future: getallusersdata(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+                itemCount: snapshot.data.docs.length,
+                itemBuilder: (context, index) {
+                  print(snapshot.data.docs[index]['name']);
+                  return snapshot.data.docs[index]['name'];
+                });
+          } else {
+            return CircularProgressIndicator();
+          }
+        });
+  }
+
   loginuser(email, pass) async {
     try {
       final Credential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: pass);
 
-      // DocumentSnapshot userSnapshot = await FirebaseFirestore.instance
-      //     .collection('users')
-      //     .doc(Credential.user?.uid)
-      //     .get();
-
+      getalldata();
       // if (userSnapshot.exists) {
-      // print(userSnapshot);
-      // User is logged in as a user
-      _navigationService.navigateToServicehome();
+      //   // User is logged in as a user
+      //   _navigationService.navigateToServicehome();
       // } else {
-      // User is not logged in as a user
-      // print('no account found');
-      // _showErrorDialog('Invalid credentials');
+      //   // User is not logged in as a user
+      //   print('no account found');
       // }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password') {
