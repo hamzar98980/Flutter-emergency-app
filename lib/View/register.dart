@@ -10,6 +10,8 @@ class Register extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController email = TextEditingController();
     TextEditingController pass = TextEditingController();
+    TextEditingController name = TextEditingController();
+    TextEditingController phone = TextEditingController();
 
     return ViewModelBuilder<register_viewmodal>.reactive(
       viewModelBuilder: () => register_viewmodal(),
@@ -74,6 +76,7 @@ class Register extends StatelessWidget {
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.9,
                             child: TextField(
+                              controller: name,
                               decoration: InputDecoration(
                                 hintText: 'Name',
                                 focusedBorder: UnderlineInputBorder(
@@ -96,6 +99,7 @@ class Register extends StatelessWidget {
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.9,
                             child: TextField(
+                              controller: phone,
                               decoration: InputDecoration(
                                 hintText: 'Phone',
                                 focusedBorder: UnderlineInputBorder(
@@ -173,7 +177,8 @@ class Register extends StatelessWidget {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            viewModel.registeruser(email.text, pass.text);
+                            viewModel.registeruser(
+                                email.text, pass.text, name.text, phone.text);
                           },
                           style: ElevatedButton.styleFrom(
                               minimumSize: Size(
