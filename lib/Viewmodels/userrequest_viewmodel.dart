@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:project/app/app.router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -12,9 +14,11 @@ class userrequest extends BaseViewModel {
     navigationservice.navigateToUserhelp();
   }
 
+  final user = FirebaseAuth.instance.currentUser!.uid;
   alluserrequest() async {
     CollectionReference userrequest =
         FirebaseFirestore.instance.collection("userhelp");
+
     return userrequest.get();
   }
 }

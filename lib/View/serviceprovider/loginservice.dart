@@ -12,7 +12,12 @@ class Servicelogin extends StatelessWidget {
     TextEditingController email = TextEditingController();
     TextEditingController pass = TextEditingController();
 
-    String _selectedItem;
+    String? selectedValue;
+    final List<String> servicelist = [
+      'Police',
+      'Ambulance',
+      'Fire Brigade',
+    ];
 
     return ViewModelBuilder.nonReactive(
       viewModelBuilder: () => loginservice(),
@@ -126,7 +131,83 @@ class Servicelogin extends StatelessWidget {
                   children: [
                     Container(
                       width: MediaQuery.of(context).size.width * 0.93,
-                      child: Dropdwonform(),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const SizedBox(height: 30),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: DropdownButtonFormField2(
+                                  decoration: InputDecoration(
+                                    //Add isDense true and zero Padding.
+                                    //Add Horizontal padding using buttonPadding and Vertical padding by increasing buttonHeight instead of add Padding here so that The whole TextField Button become clickable, and also the dropdown menu open under The whole TextField Button.
+                                    isDense: true,
+                                    contentPadding: EdgeInsets.zero,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                  ),
+                                  isExpanded: true,
+                                  hint: const Text(
+                                    'Select Services',
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                  items: servicelist
+                                      .map((item) => DropdownMenuItem<String>(
+                                            value: item,
+                                            child: Text(
+                                              item,
+                                              style: const TextStyle(
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                          ))
+                                      .toList(),
+                                  validator: (value) {
+                                    if (value == null) {
+                                      return 'Select Services.';
+                                    }
+                                    return null;
+                                  },
+                                  onChanged: (value) {
+                                    // if (onServiceSelected != null) {
+                                    //   onServiceSelected!(selectedValue!);
+                                    // }
+                                    //Do something when changing the item if you want.
+                                    selectedValue = value.toString();
+                                    // print(selectedValue);
+                                  },
+                                  onSaved: (value) {
+                                    selectedValue = value.toString();
+                                  },
+                                  buttonStyleData: const ButtonStyleData(
+                                    height: 60,
+                                    width: 600,
+                                    padding:
+                                        EdgeInsets.only(left: 10, right: 10),
+                                  ),
+                                  iconStyleData: const IconStyleData(
+                                    icon: Icon(
+                                      Icons.arrow_drop_down,
+                                      color: Colors.black45,
+                                    ),
+                                    iconSize: 30,
+                                  ),
+                                  dropdownStyleData: DropdownStyleData(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                     // Dropdwonform(),
                   ],
@@ -141,7 +222,8 @@ class Servicelogin extends StatelessWidget {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            viewModel.loginuser(email.text, pass.text);
+                            viewModel.loginuser(
+                                email.text, pass.text, selectedValue);
                           },
                           style: ElevatedButton.styleFrom(
                               minimumSize: Size(

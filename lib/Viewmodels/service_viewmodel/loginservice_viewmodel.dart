@@ -38,19 +38,12 @@ class loginservice extends BaseViewModel {
         });
   }
 
-  loginuser(email, pass) async {
+  loginuser(email, pass, type) async {
     try {
       final Credential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: pass);
 
-      getalldata();
-      // if (userSnapshot.exists) {
-      //   // User is logged in as a user
-      //   _navigationService.navigateToServicehome();
-      // } else {
-      //   // User is not logged in as a user
-      //   print('no account found');
-      // }
+      route(type);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password') {
         print('Wrong Password.');
@@ -60,5 +53,29 @@ class loginservice extends BaseViewModel {
     } catch (e) {
       print(e);
     }
+  }
+
+  route(type) {
+    User? user = FirebaseAuth.instance.currentUser;
+    var kk = FirebaseFirestore.instance
+        .collection('usersdata')
+        .where('userid', isEqualTo: user!.uid) // specify the user ID here
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      if (querySnapshot.docs.isNotEmpty) {
+        // at least one document was found
+        // we'll just use the first one here
+
+        DocumentSnapshot documentSnapshot = querySnapshot.docs.first;
+        if (documentSnapshot.get('type') == type && type == 'Police') {
+          _navigationService.navigateToPolicerequests();
+        } else {
+          print('abmnnnnn');
+          // _navigationService.navigateToPolicerequests();
+        }
+      } else {
+        print('Document does not exist on the database');
+      }
+    });
   }
 }

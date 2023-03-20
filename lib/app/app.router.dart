@@ -5,7 +5,7 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i12;
+import 'package:flutter/material.dart' as _i13;
 import 'package:flutter/material.dart';
 import 'package:project/View/homeview.dart' as _i3;
 import 'package:project/View/login.dart' as _i2;
@@ -13,12 +13,13 @@ import 'package:project/View/nearestlocation.dart' as _i6;
 import 'package:project/View/policmap.dart' as _i7;
 import 'package:project/View/register.dart' as _i4;
 import 'package:project/View/serviceprovider/loginservice.dart' as _i8;
+import 'package:project/View/serviceprovider/policerequest.dart' as _i12;
 import 'package:project/View/serviceprovider/registerservice.dart' as _i9;
 import 'package:project/View/serviceprovider/services_home.dart' as _i10;
 import 'package:project/View/userrequests.dart' as _i11;
 import 'package:project/View/usershelp.dart' as _i5;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i13;
+import 'package:stacked_services/stacked_services.dart' as _i14;
 
 class Routes {
   static const login = '/Login';
@@ -41,6 +42,8 @@ class Routes {
 
   static const requestuser = '/requestuser';
 
+  static const policerequests = '/Policerequests';
+
   static const all = <String>{
     login,
     homeview,
@@ -52,6 +55,7 @@ class Routes {
     serviceRegister,
     servicehome,
     requestuser,
+    policerequests,
   };
 }
 
@@ -97,75 +101,86 @@ class StackedRouter extends _i1.RouterBase {
       Routes.requestuser,
       page: _i11.requestuser,
     ),
+    _i1.RouteDef(
+      Routes.policerequests,
+      page: _i12.Policerequests,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.Login: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.Login(),
         settings: data,
         maintainState: false,
       );
     },
     _i3.Homeview: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.Homeview(),
         settings: data,
         maintainState: false,
       );
     },
     _i4.Register: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.Register(),
         settings: data,
         maintainState: false,
       );
     },
     _i5.Userhelp: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.Userhelp(),
         settings: data,
         maintainState: false,
       );
     },
     _i6.Nearestloc: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.Nearestloc(),
         settings: data,
         maintainState: false,
       );
     },
     _i7.Policmap: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.Policmap(),
         settings: data,
         maintainState: false,
       );
     },
     _i8.Servicelogin: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.Servicelogin(),
         settings: data,
         maintainState: false,
       );
     },
     _i9.ServiceRegister: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.ServiceRegister(),
         settings: data,
         maintainState: false,
       );
     },
     _i10.Servicehome: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.Servicehome(),
         settings: data,
         maintainState: false,
       );
     },
     _i11.requestuser: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i11.requestuser(),
+        settings: data,
+        maintainState: false,
+      );
+    },
+    _i12.Policerequests: (data) {
+      return _i13.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i12.Policerequests(),
         settings: data,
         maintainState: false,
       );
@@ -178,7 +193,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i13.NavigationService {
+extension NavigatorStateExtension on _i14.NavigationService {
   Future<dynamic> navigateToLogin([
     int? routerId,
     bool preventDuplicates = true,
@@ -319,6 +334,20 @@ extension NavigatorStateExtension on _i13.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToPolicerequests([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.policerequests,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithLogin([
     int? routerId,
     bool preventDuplicates = true,
@@ -453,6 +482,20 @@ extension NavigatorStateExtension on _i13.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.requestuser,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithPolicerequests([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.policerequests,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
