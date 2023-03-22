@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project/app/app.locator.dart';
 import 'package:project/app/app.router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked/stacked.dart';
 
 import 'package:stacked_services/stacked_services.dart';
@@ -40,10 +41,15 @@ class loginservice extends BaseViewModel {
 
   loginuser(email, pass, type) async {
     try {
+      SharedPreferences.setMockInitialValues({});
       final Credential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: pass);
 
-      route(type);
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      await prefs.setString('email', email);
+      await prefs.setString('type', type);
+      route(type, email);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password') {
         print('Wrong Password.');
@@ -55,8 +61,9 @@ class loginservice extends BaseViewModel {
     }
   }
 
-  route(type) {
+  route(type, email) async {
     User? user = FirebaseAuth.instance.currentUser;
+
     var kk = FirebaseFirestore.instance
         .collection('usersdata')
         .where('userid', isEqualTo: user!.uid) // specify the user ID here

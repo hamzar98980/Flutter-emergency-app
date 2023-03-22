@@ -46,7 +46,8 @@ dependencies:
   google_maps_flutter: ^2.2.5
   http: ^0.13.5
   dropdown_button2: ^2.0.0
-  
+  shared_preferences: ^2.0.20
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
