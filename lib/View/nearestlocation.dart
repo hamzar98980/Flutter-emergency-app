@@ -4,6 +4,8 @@ import 'package:project/Viewmodels/nearest_viewmodel.dart';
 import 'package:project/constrainsts/color_const.dart';
 import 'package:stacked/stacked.dart';
 
+import 'components/alertbox.dart';
+
 class Nearestloc extends StatefulWidget {
   const Nearestloc({super.key});
 
@@ -75,7 +77,19 @@ class _NearestlocState extends State<Nearestloc> {
                       Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            viewmodel.addhospitals(
+                                'Medical Emergency', 'Ambulance');
+                            BlurryDialog alert = BlurryDialog(
+                                Servicestype:
+                                    'for Medical Emergency has been submitted Police');
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return alert;
+                              },
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                               minimumSize: Size(
                                   MediaQuery.of(context).size.width * 0.7, 30),
@@ -93,7 +107,18 @@ class _NearestlocState extends State<Nearestloc> {
                       Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            viewmodel.addhospitals('Fire', 'Ambulance');
+                            BlurryDialog alert = BlurryDialog(
+                                Servicestype:
+                                    'for Fire has been submitted Police');
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return alert;
+                              },
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                               minimumSize: Size(
                                   MediaQuery.of(context).size.width * 0.7, 30),
@@ -111,7 +136,18 @@ class _NearestlocState extends State<Nearestloc> {
                       Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            viewmodel.addhospitals('Accident', 'Ambulance');
+                            BlurryDialog alert = BlurryDialog(
+                                Servicestype:
+                                    'for Accident has been submitted Police');
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return alert;
+                              },
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                               minimumSize: Size(
                                   MediaQuery.of(context).size.width * 0.7, 30),

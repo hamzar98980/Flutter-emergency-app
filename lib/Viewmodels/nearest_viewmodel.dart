@@ -4,10 +4,17 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:project/services/userservicehelper.dart';
 import 'package:stacked/stacked.dart';
 import 'package:http/http.dart' as http;
 
 class nearest_viewmodel extends BaseViewModel {
+  final userhelp = userservicehelp();
+
+  addhospitals(servicename, servicetype) {
+    userhelp.userhelper(servicename, servicetype);
+  }
+
   getnearmarker(type, lati, longitude) async {
     String apiKey = 'AIzaSyDT3LscTu25eNfJ2E_OBoogEIgHbh8oTvY';
     var response = await http.get(Uri.parse(

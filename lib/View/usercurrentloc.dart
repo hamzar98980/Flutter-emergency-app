@@ -29,6 +29,7 @@ class Usercurrentloc extends StatelessWidget {
           animationDuration: Duration(milliseconds: 300),
           onTap: (index) {
             if (index == 2) {
+              viewModel.navigatetorequest();
             } else if (index == 1) {
               viewModel.navigatetohome();
             }

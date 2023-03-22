@@ -15,6 +15,10 @@ class userlocation extends BaseViewModel {
     navigationservice.navigateToUserhelp();
   }
 
+  navigatetorequest() {
+    navigationservice.navigateToRequestuser();
+  }
+
   Future<Position> getcurrentuserlocation() async {
     await Geolocator.requestPermission().then((value) {}).onError(
       (error, stackTrace) {
