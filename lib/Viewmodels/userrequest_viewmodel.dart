@@ -14,28 +14,9 @@ class userrequest extends BaseViewModel {
     navigationservice.navigateToUserhelp();
   }
 
-  final user = FirebaseAuth.instance.currentUser!.uid;
-
-  alluserrequest() async {
-    User? user = FirebaseAuth.instance.currentUser;
-
-    CollectionReference userrequest =
-        FirebaseFirestore.instance.collection("userhelp");
-
-    QuerySnapshot userRequestsSnapshot = await FirebaseFirestore.instance
-        .collection("userhelp")
-        .where('userid', isEqualTo: user!.uid) // specify the user ID here
-        .get();
-
-    List<QueryDocumentSnapshot> userreq = userRequestsSnapshot.docs;
-
-    if (userreq.isNotEmpty) {
-      print('o k h a saab');
-    } else {
-      print('n o t o k  h a saab');
-    }
-
-    // return userreq;
-    return userrequest.get();
+  navigatetocuurentloc() {
+    navigationservice.navigateToUsercurrentloc();
   }
+
+  final user = FirebaseAuth.instance.currentUser!.uid;
 }

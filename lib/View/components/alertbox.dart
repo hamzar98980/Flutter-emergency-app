@@ -11,7 +11,7 @@ class BlurryDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+        filter: ImageFilter.blur(sigmaX: 0.3, sigmaY: 0.3),
         child: AlertDialog(
           title: Text(
             "Request Submitted",

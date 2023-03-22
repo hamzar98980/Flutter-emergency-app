@@ -22,7 +22,10 @@ class Userhelp extends StatelessWidget {
           onTap: (index) {
             if (index == 2) {
               viewmodel.navigatetorequest();
+            } else if (index == 0) {
+              viewmodel.navigatetocuurentloc();
             }
+
             print(index);
           },
           items: const [

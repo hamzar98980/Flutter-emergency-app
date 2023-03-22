@@ -18,6 +18,7 @@ class _NearestlocState extends State<Nearestloc> {
       viewModelBuilder: () => nearest_viewmodel(),
       builder: (context, viewmodel, child) => Scaffold(
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.black,
           onPressed: () {
             viewmodel.getcurrentlocationuser();
           },

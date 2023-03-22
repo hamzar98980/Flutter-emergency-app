@@ -20,4 +20,8 @@ class userhelp_viewmodel extends BaseViewModel {
   navigatetorequest() {
     navigationservice.navigateToRequestuser();
   }
+
+  navigatetocuurentloc() {
+    navigationservice.navigateToUsercurrentloc();
+  }
 }

@@ -15,6 +15,7 @@ class Policmap extends StatelessWidget {
       viewModelBuilder: () => policviewmodel(),
       builder: ((context, viewModel, child) => Scaffold(
             floatingActionButton: FloatingActionButton(
+              backgroundColor: Colors.black,
               onPressed: () {
                 viewModel.getcurrentlocationuser();
               },

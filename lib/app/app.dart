@@ -10,6 +10,7 @@ import '../View/policmap.dart';
 import '../View/serviceprovider/loginservice.dart';
 import '../View/serviceprovider/policerequest.dart';
 import '../View/serviceprovider/registerservice.dart';
+import '../View/usercurrentloc.dart';
 import '../View/userrequests.dart';
 import '../services/nearestlocation_service.dart';
 
@@ -26,6 +27,7 @@ import '../services/nearestlocation_service.dart';
     MaterialRoute(page: Servicehome),
     MaterialRoute(page: requestuser),
     MaterialRoute(page: Policerequests),
+    MaterialRoute(page: Usercurrentloc),
   ],
   dependencies: [
     Singleton(

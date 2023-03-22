@@ -3,6 +3,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:project/Viewmodels/userrequest_viewmodel.dart';
 import 'package:project/constrainsts/color_const.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:stacked/stacked.dart';
 
 class requestuser extends StatelessWidget {
@@ -34,10 +35,12 @@ class requestuser extends StatelessWidget {
           backgroundColor: Colors.white,
           buttonBackgroundColor: Colors.black,
           color: Color(color_const.primarycolor),
-          animationDuration: Duration(milliseconds: 300),
+          animationDuration: Duration(milliseconds: 500),
           onTap: (index) {
             if (index == 1) {
               viewModel.navigatetohome();
+            } else if (index == 0) {
+              viewModel.navigatetocuurentloc();
             }
           },
           items: const [
@@ -60,49 +63,57 @@ class requestuser extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height * 1,
-                    width: MediaQuery.of(context).size.width * 1,
-                    child: FutureBuilder(
-                        future: viewModel.alluserrequest(),
-                        builder:
-                            (BuildContext context, AsyncSnapshot snapshot) {
-                          if (snapshot.hasData) {
-                            return ListView.builder(
-                                itemCount: snapshot.data.docs.length,
-                                itemBuilder: (context, index) {
-                                  String servicenane =
-                                      snapshot.data.docs[index]['servicename'];
-                                  String servicetype =
-                                      snapshot.data.docs[index]['servicename'];
-                                  return Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: ListTile(
-                                      tileColor: Color(color_const.secondary),
-                                      leading: const CircleAvatar(
-                                        backgroundImage: AssetImage(
-                                            'assets/images/problem.png'),
-                                      ),
-                                      title: Text("${servicenane}"),
-                                      subtitle: Text('${servicetype}'),
-                                      trailing: Icon(Icons.check_circle),
+          child: Container(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 1,
+                      height: MediaQuery.of(context).size.height * 0.8,
+                      child: StreamBuilder<QuerySnapshot>(
+                        stream: FirebaseFirestore.instance
+                            .collection('userhelp')
+                            .where('userid',
+                                isEqualTo:
+                                    FirebaseAuth.instance.currentUser?.uid)
+                            .snapshots(),
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData)
+                            return Center(child: CircularProgressIndicator());
+                          final helpDocs = snapshot.data!.docs;
+                          return ListView.builder(
+                            itemCount: helpDocs.length,
+                            itemBuilder: (context, index) {
+                              final data = helpDocs[index].data()
+                                  as Map<String, dynamic>;
+                              return Container(
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(15, 5, 15, 5),
+                                  child: ListTile(
+                                    tileColor: Color(color_const.secondary),
+                                    leading: const CircleAvatar(
+                                      backgroundImage: AssetImage(
+                                          'assets/images/problem.png'),
                                     ),
-                                  );
-                                });
-                          } else {
-                            return Center(
-                                child: Container(
-                                    child: CircularProgressIndicator()));
-                          }
-                        }),
-                  )
-                ],
-              )
-            ],
+                                    title: Text(data['servicename'] ??
+                                        'No service name'),
+                                    subtitle: Text(data['servicetype'] ??
+                                        'No service type'),
+                                    trailing: Icon(Icons.check_circle),
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
