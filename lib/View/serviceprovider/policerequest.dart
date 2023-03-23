@@ -13,7 +13,17 @@ class Policerequests extends StatelessWidget {
         appBar: AppBar(
           title: Text("Police Stations Request"),
         ),
-        body: Text("data"),
+        body: Container(
+          child: Column(
+            children: [
+              ElevatedButton(
+                  onPressed: () {
+                    viewModel.getData();
+                  },
+                  child: Text('check'))
+            ],
+          ),
+        ),
       ),
     );
   }

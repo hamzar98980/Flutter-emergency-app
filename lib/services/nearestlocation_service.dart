@@ -1,12 +1,10 @@
 import 'dart:async';
 
-import 'package:stacked/stacked.dart';
-
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class nearestlocation_services {
-  LatLng currentlocation = LatLng(24.8607, 67.0011);
+  LatLng currentlocation = const LatLng(24.8607, 67.0011);
 
   final Completer<GoogleMapController> mycontroller = Completer();
   final List<Marker> marker_list = <Marker>[];
@@ -14,7 +12,7 @@ class nearestlocation_services {
   Future<Position> getcurrentuserlocation() async {
     await Geolocator.requestPermission().then((value) {}).onError(
       (error, stackTrace) {
-        print('error' + error.toString());
+        print('error$error');
       },
     );
     return await Geolocator.getCurrentPosition();
@@ -24,9 +22,9 @@ class nearestlocation_services {
     getcurrentuserlocation().then((value) async {
       LatLng currentlocation = LatLng(value.latitude, value.longitude);
       marker_list.add(Marker(
-        markerId: MarkerId('1'),
+        markerId: const MarkerId('1'),
         position: LatLng(value.latitude, value.longitude),
-        infoWindow: InfoWindow(title: 'Current Location'),
+        infoWindow: const InfoWindow(title: 'Current Location'),
       ));
       CameraPosition cameraPosition =
           CameraPosition(target: LatLng(value.latitude, value.longitude));

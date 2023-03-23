@@ -22,22 +22,22 @@ class userlocation extends BaseViewModel {
   Future<Position> getcurrentuserlocation() async {
     await Geolocator.requestPermission().then((value) {}).onError(
       (error, stackTrace) {
-        print('error' + error.toString());
+        print('error$error');
       },
     );
     return await Geolocator.getCurrentPosition();
   }
 
   final Completer<GoogleMapController> mycontroller = Completer();
-  LatLng currentlocation = LatLng(24.8607, 67.0011);
+  LatLng currentlocation = const LatLng(24.8607, 67.0011);
 
   getcurrentlocationuser() async {
     getcurrentuserlocation().then((value) async {
       LatLng currentlocation = LatLng(value.latitude, value.longitude);
       markerlist.add(Marker(
-        markerId: MarkerId('1'),
+        markerId: const MarkerId('1'),
         position: LatLng(value.latitude, value.longitude),
-        infoWindow: InfoWindow(title: 'Current Location'),
+        infoWindow: const InfoWindow(title: 'Current Location'),
       ));
 
       CameraPosition cameraPosition =

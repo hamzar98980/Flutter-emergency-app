@@ -24,7 +24,7 @@ class _NearestlocState extends State<Nearestloc> {
           onPressed: () {
             viewmodel.getcurrentlocationuser();
           },
-          child: Icon(Icons.pin_drop),
+          child: const Icon(Icons.pin_drop),
         ),
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -50,7 +50,7 @@ class _NearestlocState extends State<Nearestloc> {
           children: [
             Row(
               children: [
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width * 1,
                   height: MediaQuery.of(context).size.height * 0.57,
                   child: GoogleMap(
@@ -93,11 +93,11 @@ class _NearestlocState extends State<Nearestloc> {
                           style: ElevatedButton.styleFrom(
                               minimumSize: Size(
                                   MediaQuery.of(context).size.width * 0.7, 30),
+                              backgroundColor: Color(color_const.primarycolor),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
-                              padding: EdgeInsets.all(15),
-                              primary: Color(color_const.primarycolor)),
+                              padding: const EdgeInsets.all(15)),
                           child: const Text(
                             "Medical Emergency",
                             style: TextStyle(fontWeight: FontWeight.bold),
@@ -122,11 +122,11 @@ class _NearestlocState extends State<Nearestloc> {
                           style: ElevatedButton.styleFrom(
                               minimumSize: Size(
                                   MediaQuery.of(context).size.width * 0.7, 30),
+                              backgroundColor: Color(color_const.primarycolor),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
-                              padding: EdgeInsets.all(15),
-                              primary: Color(color_const.primarycolor)),
+                              padding: const EdgeInsets.all(15)),
                           child: const Text(
                             "Fire",
                             style: TextStyle(fontWeight: FontWeight.bold),
@@ -151,11 +151,11 @@ class _NearestlocState extends State<Nearestloc> {
                           style: ElevatedButton.styleFrom(
                               minimumSize: Size(
                                   MediaQuery.of(context).size.width * 0.7, 30),
+                              backgroundColor: Color(color_const.primarycolor),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
-                              padding: EdgeInsets.all(15),
-                              primary: Color(color_const.primarycolor)),
+                              padding: const EdgeInsets.all(15)),
                           child: const Text(
                             "Accident",
                             style: TextStyle(fontWeight: FontWeight.bold),

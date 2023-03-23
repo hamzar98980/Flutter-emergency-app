@@ -34,7 +34,7 @@ class loginservice extends BaseViewModel {
                   return snapshot.data.docs[index]['name'];
                 });
           } else {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
         });
   }

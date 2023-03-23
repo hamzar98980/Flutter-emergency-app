@@ -17,7 +17,7 @@ class Homeview extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width * 0.9,
                     height: MediaQuery.of(context).size.height * 0.6,
                     child: Image.asset('assets/images/img1.png'),
@@ -39,11 +39,11 @@ class Homeview extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                             minimumSize: Size(
                                 MediaQuery.of(context).size.width * 0.7, 30),
+                            backgroundColor: Color(color_const.primarycolor),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
-                            padding: EdgeInsets.all(15),
-                            primary: Color(color_const.primarycolor)),
+                            padding: const EdgeInsets.all(15)),
                         child: const Text(
                           "Login As A User",
                           style: TextStyle(fontWeight: FontWeight.bold),
@@ -58,11 +58,11 @@ class Homeview extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                               minimumSize: Size(
                                   MediaQuery.of(context).size.width * 0.7, 30),
+                              backgroundColor: Color(color_const.primarycolor),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
-                              padding: EdgeInsets.all(15),
-                              primary: Color(color_const.primarycolor)),
+                              padding: const EdgeInsets.all(15)),
                           child: const Text(
                             "Login As A Service Provider",
                             style: TextStyle(fontWeight: FontWeight.bold),

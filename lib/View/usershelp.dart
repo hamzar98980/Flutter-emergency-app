@@ -18,7 +18,7 @@ class Userhelp extends StatelessWidget {
           backgroundColor: Colors.white,
           buttonBackgroundColor: Colors.black,
           color: Color(color_const.primarycolor),
-          animationDuration: Duration(milliseconds: 300),
+          animationDuration: const Duration(milliseconds: 300),
           onTap: (index) {
             if (index == 2) {
               viewmodel.navigatetorequest();
@@ -55,7 +55,7 @@ class Userhelp extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 40),
-                    child: Container(
+                    child: SizedBox(
                       width: MediaQuery.of(context).size.width * 0.9,
                       child: Image.asset('assets/images/img2.png'),
                     ),
@@ -98,7 +98,7 @@ class Userhelp extends StatelessWidget {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(18.0),
-                                  child: Container(
+                                  child: SizedBox(
                                     width: 100,
                                     height: 100,
                                     child: Image.asset(
@@ -125,7 +125,7 @@ class Userhelp extends StatelessWidget {
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(18.0),
-                              child: Container(
+                              child: SizedBox(
                                 width: 100,
                                 height: 100,
                                 child:
@@ -158,7 +158,7 @@ class Userhelp extends StatelessWidget {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(18.0),
-                                child: Container(
+                                child: SizedBox(
                                   width: 100,
                                   height: 100,
                                   child: Image.asset('assets/images/fire.png'),

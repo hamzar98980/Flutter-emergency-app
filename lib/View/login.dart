@@ -20,7 +20,7 @@ class Login extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_back,
                 color: Colors.black,
               ),
@@ -41,7 +41,7 @@ class Login extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsets.fromLTRB(15, 10, 0, 5),
+                          padding: const EdgeInsets.fromLTRB(15, 10, 0, 5),
                           child: Text(
                             "Sign In",
                             style: TextStyle(
@@ -51,7 +51,7 @@ class Login extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(15, 0, 0, 5),
+                          padding: const EdgeInsets.fromLTRB(15, 0, 0, 5),
                           child: Text(
                             "Sign in to continue",
                             style: TextStyle(
@@ -69,8 +69,8 @@ class Login extends StatelessWidget {
                     Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.fromLTRB(15, 20, 0, 5),
-                          child: Container(
+                          padding: const EdgeInsets.fromLTRB(15, 20, 0, 5),
+                          child: SizedBox(
                             width: MediaQuery.of(context).size.width * 0.9,
                             child: TextField(
                               controller: email,
@@ -80,8 +80,8 @@ class Login extends StatelessWidget {
                                     borderSide: BorderSide(
                                         width: 5.0,
                                         color: Color(color_const.primarycolor)),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8))),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(8))),
                                 border: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                       color: Color(color_const.primarycolor),
@@ -92,8 +92,8 @@ class Login extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(15, 20, 0, 5),
-                          child: Container(
+                          padding: const EdgeInsets.fromLTRB(15, 20, 0, 5),
+                          child: SizedBox(
                             width: MediaQuery.of(context).size.width * 0.9,
                             child: TextField(
                               controller: pass,
@@ -103,8 +103,8 @@ class Login extends StatelessWidget {
                                     borderSide: BorderSide(
                                         width: 5.0,
                                         color: Color(color_const.primarycolor)),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8))),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(8))),
                                 border: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                       color: Color(color_const.primarycolor),
@@ -133,11 +133,11 @@ class Login extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                               minimumSize: Size(
                                   MediaQuery.of(context).size.width * 0.7, 30),
+                              backgroundColor: Color(color_const.primarycolor),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
-                              padding: EdgeInsets.all(15),
-                              primary: Color(color_const.primarycolor)),
+                              padding: const EdgeInsets.all(15)),
                           child: const Text(
                             "Login",
                             style: TextStyle(fontWeight: FontWeight.bold),
@@ -150,7 +150,7 @@ class Login extends StatelessWidget {
                             alignment: Alignment.center,
                             child: InkWell(
                               child: Column(
-                                children: [
+                                children: const [
                                   Text("Dont have an Account?"),
                                   Text("Create new account")
                                 ],

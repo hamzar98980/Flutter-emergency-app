@@ -19,14 +19,14 @@ class Usercurrentloc extends StatelessWidget {
           onPressed: () {
             viewModel.getcurrentlocationuser();
           },
-          child: Icon(Icons.pin_drop),
+          child: const Icon(Icons.pin_drop),
         ),
         bottomNavigationBar: CurvedNavigationBar(
           index: 0,
           backgroundColor: Colors.white,
           buttonBackgroundColor: Colors.black,
           color: Color(color_const.primarycolor),
-          animationDuration: Duration(milliseconds: 300),
+          animationDuration: const Duration(milliseconds: 300),
           onTap: (index) {
             if (index == 2) {
               viewModel.navigatetorequest();
@@ -52,7 +52,7 @@ class Usercurrentloc extends StatelessWidget {
             ),
           ],
         ),
-        body: Container(
+        body: SizedBox(
           width: MediaQuery.of(context).size.width * 1,
           height: MediaQuery.of(context).size.height * 1,
           child: GoogleMap(

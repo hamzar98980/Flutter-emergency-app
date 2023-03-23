@@ -19,11 +19,11 @@ class requestuser extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back,
                 color: Colors.black,
               )),
-          title: Text(
+          title: const Text(
             'Requests',
             style: TextStyle(color: Colors.black),
           ),
@@ -35,7 +35,7 @@ class requestuser extends StatelessWidget {
           backgroundColor: Colors.white,
           buttonBackgroundColor: Colors.black,
           color: Color(color_const.primarycolor),
-          animationDuration: Duration(milliseconds: 500),
+          animationDuration: const Duration(milliseconds: 500),
           onTap: (index) {
             if (index == 1) {
               viewModel.navigatetohome();
@@ -68,7 +68,7 @@ class requestuser extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Container(
+                    SizedBox(
                       width: MediaQuery.of(context).size.width * 1,
                       height: MediaQuery.of(context).size.height * 0.8,
                       child: StreamBuilder<QuerySnapshot>(
@@ -79,8 +79,10 @@ class requestuser extends StatelessWidget {
                                     FirebaseAuth.instance.currentUser?.uid)
                             .snapshots(),
                         builder: (context, snapshot) {
-                          if (!snapshot.hasData)
-                            return Center(child: CircularProgressIndicator());
+                          if (!snapshot.hasData) {
+                            return const Center(
+                                child: CircularProgressIndicator());
+                          }
                           final helpDocs = snapshot.data!.docs;
                           return ListView.builder(
                             itemCount: helpDocs.length,
@@ -101,7 +103,7 @@ class requestuser extends StatelessWidget {
                                         'No service name'),
                                     subtitle: Text(data['servicetype'] ??
                                         'No service type'),
-                                    trailing: Icon(Icons.check_circle),
+                                    trailing: const Icon(Icons.check_circle),
                                   ),
                                 ),
                               );

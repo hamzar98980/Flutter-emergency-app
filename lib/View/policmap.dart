@@ -19,7 +19,7 @@ class Policmap extends StatelessWidget {
               onPressed: () {
                 viewModel.getcurrentlocationuser();
               },
-              child: Icon(Icons.pin_drop),
+              child: const Icon(Icons.pin_drop),
             ),
             backgroundColor: Colors.white,
             appBar: AppBar(
@@ -45,7 +45,7 @@ class Policmap extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Container(
+                    SizedBox(
                       width: MediaQuery.of(context).size.width * 1,
                       height: MediaQuery.of(context).size.height * 0.57,
                       child: GoogleMap(
@@ -88,11 +88,12 @@ class Policmap extends StatelessWidget {
                                   minimumSize: Size(
                                       MediaQuery.of(context).size.width * 0.7,
                                       30),
+                                  backgroundColor:
+                                      Color(color_const.primarycolor),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10.0),
                                   ),
-                                  padding: EdgeInsets.all(15),
-                                  primary: Color(color_const.primarycolor)),
+                                  padding: const EdgeInsets.all(15)),
                               child: const Text(
                                 "Fight / Fire",
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -118,11 +119,12 @@ class Policmap extends StatelessWidget {
                                   minimumSize: Size(
                                       MediaQuery.of(context).size.width * 0.7,
                                       30),
+                                  backgroundColor:
+                                      Color(color_const.primarycolor),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10.0),
                                   ),
-                                  padding: EdgeInsets.all(15),
-                                  primary: Color(color_const.primarycolor)),
+                                  padding: const EdgeInsets.all(15)),
                               child: const Text(
                                 "Robbery",
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -148,11 +150,12 @@ class Policmap extends StatelessWidget {
                                   minimumSize: Size(
                                       MediaQuery.of(context).size.width * 0.7,
                                       30),
+                                  backgroundColor:
+                                      Color(color_const.primarycolor),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10.0),
                                   ),
-                                  padding: EdgeInsets.all(15),
-                                  primary: Color(color_const.primarycolor)),
+                                  padding: const EdgeInsets.all(15)),
                               child: const Text(
                                 "Harassment",
                                 style: TextStyle(fontWeight: FontWeight.bold),

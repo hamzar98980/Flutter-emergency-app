@@ -7,7 +7,6 @@ import 'package:project/services/nearestlocation_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:http/http.dart' as http;
 
-import '../View/components/alertbox.dart';
 import '../app/app.locator.dart';
 import '../services/userservicehelper.dart';
 
@@ -22,7 +21,7 @@ class policviewmodel extends BaseViewModel {
   getnearmarker(type, lati, longitude) async {
     String apiKey = 'AIzaSyDT3LscTu25eNfJ2E_OBoogEIgHbh8oTvY';
     var response = await http.get(Uri.parse(
-        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lati},${longitude}&radius=5500&type=$type&key=$apiKey'));
+        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lati,$longitude&radius=5500&type=$type&key=$apiKey'));
 
     if (response.statusCode == 200) {
       var data = json.decode(response.body);
@@ -53,7 +52,7 @@ class policviewmodel extends BaseViewModel {
   Future<Position> getcurrentuserlocation() async {
     await Geolocator.requestPermission().then((value) {}).onError(
       (error, stackTrace) {
-        print('error' + error.toString());
+        print('error$error');
       },
     );
     return await Geolocator.getCurrentPosition();
@@ -65,9 +64,9 @@ class policviewmodel extends BaseViewModel {
       await getnearmarker('police', value.latitude, value.longitude);
 
       policemarker.add(Marker(
-        markerId: MarkerId('1'),
+        markerId: const MarkerId('1'),
         position: LatLng(value.latitude, value.longitude),
-        infoWindow: InfoWindow(title: 'Current Location'),
+        infoWindow: const InfoWindow(title: 'Current Location'),
       ));
 
       CameraPosition cameraPosition =

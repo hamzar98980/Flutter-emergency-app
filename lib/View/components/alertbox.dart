@@ -6,7 +6,7 @@ import 'package:project/constrainsts/color_const.dart';
 class BlurryDialog extends StatelessWidget {
   String Servicestype;
   BlurryDialog({super.key, required this.Servicestype});
-  TextStyle textStyle = TextStyle(color: Colors.black);
+  TextStyle textStyle = const TextStyle(color: Colors.black);
 
   @override
   Widget build(BuildContext context) {
@@ -18,17 +18,17 @@ class BlurryDialog extends StatelessWidget {
             style: textStyle,
           ),
           content: Text(
-            "Your Application ${Servicestype}",
+            "Your Application $Servicestype",
             style: TextStyle(color: Color(color_const.primarycolor)),
           ),
           actions: <Widget>[
             ElevatedButton(
-              child: Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.black12)),
+              child: const Text("OK"),
             ),
           ],
         ));
