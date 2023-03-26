@@ -45,10 +45,6 @@ class loginservice extends BaseViewModel {
       final Credential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: pass);
 
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-
-      await prefs.setString('email', email);
-      await prefs.setString('type', type);
       route(type, email);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password') {
@@ -68,16 +64,19 @@ class loginservice extends BaseViewModel {
         .collection('usersdata')
         .where('userid', isEqualTo: user!.uid) // specify the user ID here
         .get()
-        .then((QuerySnapshot querySnapshot) {
+        .then((QuerySnapshot querySnapshot) async {
       if (querySnapshot.docs.isNotEmpty) {
         // at least one document was found
         // we'll just use the first one here
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('email', email);
+        await prefs.setString('type', type);
 
         DocumentSnapshot documentSnapshot = querySnapshot.docs.first;
         if (documentSnapshot.get('type') == type && type == 'Police') {
           _navigationService.navigateToPolicerequests();
         } else {
-          print('abmnnnnn');
+          _navigationService.navigateToPolicerequests();
           // _navigationService.navigateToPolicerequests();
         }
       } else {

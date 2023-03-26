@@ -1,23 +1,28 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked/stacked.dart';
 
 // ignore: camel_case_types
 class police_request extends BaseViewModel {
-  Future<void> getData() async {
-    final QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
-        .instance
-        .collection('userhelp')
-        .where('type', isEqualTo: 'Police')
-        .get();
+  // Future<Stream<QuerySnapshot<Object?>>> getalldata() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   print(prefs.getString('email'));
+  //   var usertype = prefs.getString('type');
 
-    for (final QueryDocumentSnapshot<Map<String, dynamic>> doc
-        in snapshot.docs) {
-      final data = doc.data();
-      // Do something with the data...
-      print(data['servicename']);
-    }
+  //   return FirebaseFirestore.instance
+  //       .collection('userhelp')
+  //       .where('servicetype', isEqualTo: usertype)
+  //       .snapshots();
+  // }
+
+  Stream<QuerySnapshot> getalldata() async* {
+    final prefs = await SharedPreferences.getInstance();
+    var usertype = prefs.getString('type');
+
+    yield* FirebaseFirestore.instance
+        .collection('userhelp')
+        .where('servicetype', isEqualTo: usertype)
+        .snapshots();
   }
 
   getsharedpreferences() async {
