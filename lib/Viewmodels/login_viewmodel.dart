@@ -11,6 +11,17 @@ class Login_viewmodel extends BaseViewModel {
     Navigationservice.navigateToRegister();
   }
 
+  bool passwordwhow = true;
+
+  passwordshowfunction() {
+    if (passwordwhow == true) {
+      passwordwhow = false;
+    } else {
+      passwordwhow = true;
+    }
+    rebuildUi();
+  }
+
   loginuser(email, pass) async {
     try {
       final Credential = await FirebaseAuth.instance

@@ -97,7 +97,19 @@ class Login extends StatelessWidget {
                             width: MediaQuery.of(context).size.width * 0.9,
                             child: TextField(
                               controller: pass,
+                              obscureText: viewModel.passwordwhow,
                               decoration: InputDecoration(
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    viewModel.passwordwhow == true
+                                        ? Icons.visibility_off
+                                        : Icons.visibility,
+                                    color: Colors.black,
+                                  ),
+                                  onPressed: () {
+                                    viewModel.passwordshowfunction();
+                                  },
+                                ),
                                 hintText: 'Enter Password',
                                 focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(

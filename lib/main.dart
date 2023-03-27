@@ -22,16 +22,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       navigatorKey: StackedService.navigatorKey,
       onGenerateRoute: StackedRouter().onGenerateRoute,
-      // home: FutureBuilder<Widget>(
-      //   future: checkIfDataExists(context),
-      //   builder: (context, snapshot) {
-      //     if (snapshot.connectionState == ConnectionState.done) {
-      //       return snapshot.data!;
-      //     } else {
-      //       return const CircularProgressIndicator();
-      //     }
-      //   },
-      // ),
     );
   }
 }

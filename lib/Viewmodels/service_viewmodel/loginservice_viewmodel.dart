@@ -11,6 +11,17 @@ import 'package:stacked_services/stacked_services.dart';
 class loginservice extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
+  bool passwordwhow = true;
+
+  passwordshowfunction() {
+    if (passwordwhow == true) {
+      passwordwhow = false;
+    } else {
+      passwordwhow = true;
+    }
+    rebuildUi();
+  }
+
   navigatetoregsit() {
     _navigationService.navigateToServiceRegister();
   }
@@ -39,7 +50,7 @@ class loginservice extends BaseViewModel {
         });
   }
 
-  loginuser(email, pass, type) async {
+  loginuser(email, pass, type, context) async {
     try {
       SharedPreferences.setMockInitialValues({});
       final Credential = await FirebaseAuth.instance
@@ -47,11 +58,7 @@ class loginservice extends BaseViewModel {
 
       route(type, email);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'wrong-password') {
-        print('Wrong Password.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-      }
+      if (e.code == 'wrong-password') {}
     } catch (e) {
       print(e);
     }

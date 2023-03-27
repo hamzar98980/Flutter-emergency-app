@@ -43,11 +43,71 @@ class Policerequests extends StatelessWidget {
                             itemBuilder: (context, index) {
                               final data = helpDocs[index].data()
                                   as Map<String, dynamic>;
+
+                              var userid = data['userid'];
                               return Container(
                                 child: Padding(
                                   padding:
                                       const EdgeInsets.fromLTRB(15, 5, 15, 5),
                                   child: ListTile(
+                                    onTap: () {
+                                      showModalBottomSheet(
+                                          shape: RoundedRectangleBorder(
+                                            //the rounded corner is created here
+                                            borderRadius:
+                                                BorderRadius.circular(100.0),
+                                          ),
+                                          context: context,
+                                          builder: (context) {
+                                            return Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius: const BorderRadius
+                                                        .only(
+                                                    topLeft:
+                                                        Radius.circular(40.0),
+                                                    topRight:
+                                                        Radius.circular(40.0)),
+                                                color: Color(
+                                                    color_const.secondary),
+                                              ),
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.4,
+                                              child:
+                                                  StreamBuilder<QuerySnapshot>(
+                                                stream: viewModel
+                                                    .getalluserdata(userid),
+                                                builder: (context, snapshot) {
+                                                  if (!snapshot.hasData) {
+                                                    return const Center(
+                                                        child:
+                                                            CircularProgressIndicator());
+                                                  }
+                                                  final userdocs =
+                                                      snapshot.data!.docs;
+
+                                                  return ListView.builder(
+                                                    itemCount: userdocs.length,
+                                                    itemBuilder:
+                                                        (context, index) {
+                                                      final usersdata =
+                                                          userdocs[index].data()
+                                                              as Map<String,
+                                                                  dynamic>;
+                                                      print(usersdata);
+                                                      var username =
+                                                          usersdata['Name'];
+                                                      return Container(
+                                                        child: Text(username),
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                              ),
+                                            );
+                                          });
+                                    },
                                     tileColor: Color(color_const.secondary),
                                     leading: const CircleAvatar(
                                       backgroundImage: AssetImage(

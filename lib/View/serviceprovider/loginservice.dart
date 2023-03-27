@@ -1,6 +1,5 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:project/View/components/dropdownwidget.dart';
 import 'package:project/Viewmodels/service_viewmodel/loginservice_viewmodel.dart';
 import 'package:project/constrainsts/color_const.dart';
 import 'package:stacked/stacked.dart';
@@ -19,7 +18,7 @@ class Servicelogin extends StatelessWidget {
       'Fire Brigade',
     ];
 
-    return ViewModelBuilder.nonReactive(
+    return ViewModelBuilder.reactive(
       viewModelBuilder: () => loginservice(),
       builder: (context, viewModel, child) => Scaffold(
         backgroundColor: Colors.white,
@@ -106,7 +105,19 @@ class Servicelogin extends StatelessWidget {
                             width: MediaQuery.of(context).size.width * 0.9,
                             child: TextField(
                               controller: pass,
+                              obscureText: viewModel.passwordwhow,
                               decoration: InputDecoration(
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    viewModel.passwordwhow == true
+                                        ? Icons.visibility_off
+                                        : Icons.visibility,
+                                    color: Colors.black,
+                                  ),
+                                  onPressed: () {
+                                    viewModel.passwordshowfunction();
+                                  },
+                                ),
                                 hintText: 'Enter Password',
                                 focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
@@ -222,8 +233,28 @@ class Servicelogin extends StatelessWidget {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            viewModel.loginuser(
-                                email.text, pass.text, selectedValue);
+                            if (email.text == '') {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(const SnackBar(
+                                content: Text("Email Field Is Required"),
+                                duration: Duration(seconds: 5),
+                              ));
+                            } else if (pass.text == '') {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(const SnackBar(
+                                content: Text("Password Field Is Required"),
+                                duration: Duration(seconds: 5),
+                              ));
+                            } else if (selectedValue == null) {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(const SnackBar(
+                                content: Text("Select Your Services"),
+                                duration: Duration(seconds: 5),
+                              ));
+                            } else {
+                              viewModel.loginuser(email.text, pass.text,
+                                  selectedValue, context);
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                               minimumSize: Size(

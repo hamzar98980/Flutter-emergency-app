@@ -4,17 +4,6 @@ import 'package:stacked/stacked.dart';
 
 // ignore: camel_case_types
 class police_request extends BaseViewModel {
-  // Future<Stream<QuerySnapshot<Object?>>> getalldata() async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   print(prefs.getString('email'));
-  //   var usertype = prefs.getString('type');
-
-  //   return FirebaseFirestore.instance
-  //       .collection('userhelp')
-  //       .where('servicetype', isEqualTo: usertype)
-  //       .snapshots();
-  // }
-
   Stream<QuerySnapshot> getalldata() async* {
     final prefs = await SharedPreferences.getInstance();
     var usertype = prefs.getString('type');
@@ -22,6 +11,13 @@ class police_request extends BaseViewModel {
     yield* FirebaseFirestore.instance
         .collection('userhelp')
         .where('servicetype', isEqualTo: usertype)
+        .snapshots();
+  }
+
+  Stream<QuerySnapshot> getalluserdata(userid) {
+    return FirebaseFirestore.instance
+        .collection('usersdata')
+        .where('userid', isEqualTo: userid)
         .snapshots();
   }
 
