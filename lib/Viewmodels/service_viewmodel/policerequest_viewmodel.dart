@@ -23,9 +23,9 @@ class police_request extends BaseViewModel {
 
   getsharedpreferences() async {
     final prefs = await SharedPreferences.getInstance();
-    print(prefs.getString('email'));
-    print(prefs.getString('type'));
-    // print(prefs.remove('email'));
+    var type = prefs.getString('type');
+    return type;
+    // print(preftypes.remove('email'));
     // print(prefs.getString('email'));
   }
 }

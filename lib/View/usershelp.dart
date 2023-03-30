@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:project/View/homeview.dart';
 import 'package:project/constrainsts/color_const.dart';
 import 'package:stacked/stacked.dart';
 
@@ -13,6 +14,27 @@ class Userhelp extends StatelessWidget {
     return ViewModelBuilder.nonReactive(
       viewModelBuilder: () => userhelp_viewmodel(),
       builder: (context, viewmodel, child) => Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Homeview(),
+                  ));
+            },
+            icon: const Icon(
+              Icons.logout,
+              color: Colors.black,
+            ),
+          ),
+          elevation: 0,
+          backgroundColor: Colors.white,
+          title: const Text(
+            'Services',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
         bottomNavigationBar: CurvedNavigationBar(
           index: 1,
           backgroundColor: Colors.white,

@@ -4,6 +4,8 @@ import 'package:project/Viewmodels/service_viewmodel/policerequest_viewmodel.dar
 import 'package:project/constrainsts/color_const.dart';
 import 'package:stacked/stacked.dart';
 
+import '../homeview.dart';
+
 class Policerequests extends StatelessWidget {
   const Policerequests({super.key});
 
@@ -13,16 +15,29 @@ class Policerequests extends StatelessWidget {
       viewModelBuilder: () => police_request(),
       builder: (context, viewModel, child) => Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Homeview(),
+                  ));
+            },
+            icon: const Icon(
+              Icons.logout,
+              color: Colors.black,
+            ),
+          ),
           elevation: 0,
           backgroundColor: Colors.white,
           title: const Text(
-            "Police Stations Request",
+            'Your Requests',
             style: TextStyle(color: Colors.black),
           ),
         ),
         body: SingleChildScrollView(
           child: Container(
-            color: Colors.white,
+            // color: Colors.white,
             child: Column(
               children: [
                 Row(
@@ -95,11 +110,72 @@ class Policerequests extends StatelessWidget {
                                                           userdocs[index].data()
                                                               as Map<String,
                                                                   dynamic>;
-                                                      print(usersdata);
                                                       var username =
                                                           usersdata['Name'];
-                                                      return Container(
-                                                        child: Text(username),
+                                                      return Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .fromLTRB(
+                                                                10, 20, 10, 0),
+                                                        child: Container(
+                                                          child: DataTable(
+                                                            dataRowColor:
+                                                                MaterialStateProperty
+                                                                    .all(Colors
+                                                                            .grey[
+                                                                        100]),
+                                                            columns: const [
+                                                              DataColumn(
+                                                                label: Text(
+                                                                    'User Data'),
+                                                              ),
+                                                              DataColumn(
+                                                                label: Text(''),
+                                                              ),
+                                                            ],
+                                                            rows: [
+                                                              DataRow(
+                                                                cells: [
+                                                                  const DataCell(
+                                                                      Text(
+                                                                          'Service type')),
+                                                                  DataCell(Text(
+                                                                      data[
+                                                                          'servicename'])),
+                                                                ],
+                                                              ),
+                                                              DataRow(
+                                                                cells: [
+                                                                  const DataCell(
+                                                                      Text(
+                                                                          'Name')),
+                                                                  DataCell(Text(
+                                                                      username)),
+                                                                ],
+                                                              ),
+                                                              DataRow(
+                                                                cells: [
+                                                                  const DataCell(
+                                                                      Text(
+                                                                          'Number')),
+                                                                  DataCell(Text(
+                                                                      usersdata[
+                                                                          'phone'])),
+                                                                ],
+                                                              ),
+                                                              DataRow(
+                                                                cells: [
+                                                                  const DataCell(
+                                                                      Text(
+                                                                          'Email')),
+                                                                  DataCell(Text(
+                                                                      usersdata[
+                                                                          'email'])),
+                                                                ],
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ),
                                                       );
                                                     },
                                                   );

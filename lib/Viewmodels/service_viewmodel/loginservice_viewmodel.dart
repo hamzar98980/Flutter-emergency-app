@@ -50,7 +50,7 @@ class loginservice extends BaseViewModel {
         });
   }
 
-  loginuser(email, pass, type, context) async {
+  loginuser(email, pass, type) async {
     try {
       SharedPreferences.setMockInitialValues({});
       final Credential = await FirebaseAuth.instance

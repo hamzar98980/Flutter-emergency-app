@@ -235,25 +235,32 @@ class Servicelogin extends StatelessWidget {
                           onPressed: () {
                             if (email.text == '') {
                               ScaffoldMessenger.of(context)
-                                  .showSnackBar(const SnackBar(
-                                content: Text("Email Field Is Required"),
-                                duration: Duration(seconds: 5),
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                    Color(color_const.primarycolor),
+                                content: const Text("Email Field Is Required"),
+                                duration: const Duration(seconds: 5),
                               ));
                             } else if (pass.text == '') {
                               ScaffoldMessenger.of(context)
-                                  .showSnackBar(const SnackBar(
-                                content: Text("Password Field Is Required"),
-                                duration: Duration(seconds: 5),
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                    Color(color_const.primarycolor),
+                                content:
+                                    const Text("Password Field Is Required"),
+                                duration: const Duration(seconds: 5),
                               ));
                             } else if (selectedValue == null) {
                               ScaffoldMessenger.of(context)
-                                  .showSnackBar(const SnackBar(
-                                content: Text("Select Your Services"),
-                                duration: Duration(seconds: 5),
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                    Color(color_const.primarycolor),
+                                content: const Text("Select Your Services"),
+                                duration: const Duration(seconds: 5),
                               ));
                             } else {
-                              viewModel.loginuser(email.text, pass.text,
-                                  selectedValue, context);
+                              viewModel.loginuser(
+                                  email.text, pass.text, selectedValue);
                             }
                           },
                           style: ElevatedButton.styleFrom(
