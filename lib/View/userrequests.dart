@@ -103,7 +103,14 @@ class requestuser extends StatelessWidget {
                                         'No service name'),
                                     subtitle: Text(data['servicetype'] ??
                                         'No service type'),
-                                    trailing: const Icon(Icons.check_circle),
+                                    trailing: Icon(
+                                      data['status'] == '2'
+                                          ? Icons.check_circle
+                                          : Icons.cancel,
+                                      color: data['status'] == '2'
+                                          ? Colors.green
+                                          : Colors.red,
+                                    ),
                                   ),
                                 ),
                               );

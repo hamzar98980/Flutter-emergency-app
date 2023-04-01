@@ -8,12 +8,16 @@ class userservicehelp {
 
     CollectionReference userhelp =
         FirebaseFirestore.instance.collection('userhelp');
+    String docId = userhelp.doc().id; //
     userhelp
-        .add({
+        .doc(docId)
+        .set({
           'userid': user,
           'email': email,
           'servicename': servicename,
           'servicetype': servicetype,
+          'status': '1',
+          'docId': docId,
         })
         .then((value) => print("done"))
         .catchError((e) => print(e));

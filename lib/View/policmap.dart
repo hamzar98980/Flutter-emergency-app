@@ -24,7 +24,7 @@ class Policmap extends StatelessWidget {
             backgroundColor: Colors.white,
             appBar: AppBar(
               title: const Text(
-                "Police Station",
+                "Nearest Police Station",
                 style: TextStyle(color: Colors.black),
               ),
               leading: Container(

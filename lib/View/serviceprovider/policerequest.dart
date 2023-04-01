@@ -88,7 +88,7 @@ class Policerequests extends StatelessWidget {
                                               height: MediaQuery.of(context)
                                                       .size
                                                       .height *
-                                                  0.4,
+                                                  0.5,
                                               child:
                                                   StreamBuilder<QuerySnapshot>(
                                                 stream: viewModel
@@ -116,65 +116,97 @@ class Policerequests extends StatelessWidget {
                                                         padding:
                                                             const EdgeInsets
                                                                     .fromLTRB(
-                                                                10, 20, 10, 0),
-                                                        child: Container(
-                                                          child: DataTable(
-                                                            dataRowColor:
-                                                                MaterialStateProperty
-                                                                    .all(Colors
-                                                                            .grey[
-                                                                        100]),
-                                                            columns: const [
-                                                              DataColumn(
-                                                                label: Text(
-                                                                    'User Data'),
-                                                              ),
-                                                              DataColumn(
-                                                                label: Text(''),
-                                                              ),
-                                                            ],
-                                                            rows: [
-                                                              DataRow(
-                                                                cells: [
-                                                                  const DataCell(
-                                                                      Text(
-                                                                          'Service type')),
-                                                                  DataCell(Text(
-                                                                      data[
-                                                                          'servicename'])),
+                                                                0, 20, 0, 0),
+                                                        child: Column(
+                                                          children: [
+                                                            SizedBox(
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  1,
+                                                              child: DataTable(
+                                                                dataRowColor:
+                                                                    MaterialStateProperty.all(
+                                                                        Colors.grey[
+                                                                            100]),
+                                                                columns: const [
+                                                                  DataColumn(
+                                                                    label: Text(
+                                                                        'User Data'),
+                                                                  ),
+                                                                  DataColumn(
+                                                                    label: Text(
+                                                                        ''),
+                                                                  ),
+                                                                ],
+                                                                rows: [
+                                                                  DataRow(
+                                                                    cells: [
+                                                                      const DataCell(
+                                                                          Text(
+                                                                              'Service type')),
+                                                                      DataCell(Text(
+                                                                          data[
+                                                                              'servicename'])),
+                                                                    ],
+                                                                  ),
+                                                                  DataRow(
+                                                                    cells: [
+                                                                      const DataCell(
+                                                                          Text(
+                                                                              'Name')),
+                                                                      DataCell(Text(
+                                                                          username)),
+                                                                    ],
+                                                                  ),
+                                                                  DataRow(
+                                                                    cells: [
+                                                                      const DataCell(
+                                                                          Text(
+                                                                              'Number')),
+                                                                      DataCell(Text(
+                                                                          usersdata[
+                                                                              'phone'])),
+                                                                    ],
+                                                                  ),
+                                                                  DataRow(
+                                                                    cells: [
+                                                                      const DataCell(
+                                                                          Text(
+                                                                              'Email')),
+                                                                      DataCell(Text(
+                                                                          usersdata[
+                                                                              'email'])),
+                                                                    ],
+                                                                  )
                                                                 ],
                                                               ),
-                                                              DataRow(
-                                                                cells: [
-                                                                  const DataCell(
-                                                                      Text(
-                                                                          'Name')),
-                                                                  DataCell(Text(
-                                                                      username)),
-                                                                ],
-                                                              ),
-                                                              DataRow(
-                                                                cells: [
-                                                                  const DataCell(
-                                                                      Text(
-                                                                          'Number')),
-                                                                  DataCell(Text(
-                                                                      usersdata[
-                                                                          'phone'])),
-                                                                ],
-                                                              ),
-                                                              DataRow(
-                                                                cells: [
-                                                                  const DataCell(
-                                                                      Text(
-                                                                          'Email')),
-                                                                  DataCell(Text(
-                                                                      usersdata[
-                                                                          'email'])),
-                                                                ],
-                                                              )
-                                                            ],
-                                                          ),
+                                                            ),
+                                                            Center(
+                                                              child: ElevatedButton(
+                                                                  style: ElevatedButton.styleFrom(
+                                                                      minimumSize: Size(MediaQuery.of(context).size.width * 0.5, 30),
+                                                                      backgroundColor: data['status'] == '2' ? Colors.green : Color(color_const.primarycolor),
+                                                                      shape: RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(10.0),
+                                                                      ),
+                                                                      padding: const EdgeInsets.all(15)),
+                                                                  onPressed: data['status'] == '1'
+                                                                      ? () {
+                                                                          Navigator.pop(
+                                                                              context);
+
+                                                                          viewModel
+                                                                              .updatedata(data['docId']);
+                                                                          viewModel
+                                                                              .showdialog(context);
+                                                                        }
+                                                                      : null,
+                                                                  child: data['status'] == '2' ? const Text("Completed") : const Text("Complete")),
+                                                            )
+                                                          ],
                                                         ),
                                                       );
                                                     },
@@ -193,7 +225,14 @@ class Policerequests extends StatelessWidget {
                                         'No service name'),
                                     subtitle: Text(data['servicetype'] ??
                                         'No service type'),
-                                    trailing: const Icon(Icons.check_circle),
+                                    trailing: Icon(
+                                      data['status'] == '2'
+                                          ? Icons.check_circle
+                                          : Icons.cancel,
+                                      color: data['status'] == '2'
+                                          ? Colors.green
+                                          : Colors.red,
+                                    ),
                                   ),
                                 ),
                               );

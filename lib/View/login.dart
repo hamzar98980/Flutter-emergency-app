@@ -140,7 +140,26 @@ class Login extends StatelessWidget {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            viewModel.loginuser(email.text, pass.text);
+                            if (email.text == '') {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                    Color(color_const.primarycolor),
+                                content: const Text("Email Field Is Required"),
+                                duration: const Duration(seconds: 5),
+                              ));
+                            } else if (pass.text == '') {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                backgroundColor:
+                                    Color(color_const.primarycolor),
+                                content:
+                                    const Text("Password Field Is Required"),
+                                duration: const Duration(seconds: 5),
+                              ));
+                            } else {
+                              viewModel.loginuser(email.text, pass.text);
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                               minimumSize: Size(
