@@ -69,8 +69,8 @@ class policviewmodel extends BaseViewModel {
         infoWindow: const InfoWindow(title: 'Current Location'),
       ));
 
-      CameraPosition cameraPosition =
-          CameraPosition(target: LatLng(value.latitude, value.longitude));
+      CameraPosition cameraPosition = CameraPosition(
+          target: LatLng(value.latitude, value.longitude), zoom: 12);
 
       final GoogleMapController controller = await policecontroller.future;
       controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));

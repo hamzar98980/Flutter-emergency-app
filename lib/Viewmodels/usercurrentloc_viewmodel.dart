@@ -40,8 +40,8 @@ class userlocation extends BaseViewModel {
         infoWindow: const InfoWindow(title: 'Current Location'),
       ));
 
-      CameraPosition cameraPosition =
-          CameraPosition(target: LatLng(value.latitude, value.longitude));
+      CameraPosition cameraPosition = CameraPosition(
+          target: LatLng(value.latitude, value.longitude), zoom: 15);
 
       final GoogleMapController controller = await mycontroller.future;
       controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
