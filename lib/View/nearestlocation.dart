@@ -82,7 +82,7 @@ class _NearestlocState extends State<Nearestloc> {
                                 'Medical Emergency', 'Ambulance');
                             BlurryDialog alert = BlurryDialog(
                                 Servicestype:
-                                    'for Medical Emergency has been submitted Police');
+                                    'for Medical Emergency has been submitted Hospital');
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
@@ -111,7 +111,7 @@ class _NearestlocState extends State<Nearestloc> {
                             viewmodel.addhospitals('Fire', 'Ambulance');
                             BlurryDialog alert = BlurryDialog(
                                 Servicestype:
-                                    'for Fire has been submitted Police');
+                                    'for Fire has been submitted Hospital');
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
@@ -140,7 +140,7 @@ class _NearestlocState extends State<Nearestloc> {
                             viewmodel.addhospitals('Accident', 'Ambulance');
                             BlurryDialog alert = BlurryDialog(
                                 Servicestype:
-                                    'for Accident has been submitted Police');
+                                    'for Accident has been submitted Hospital');
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
